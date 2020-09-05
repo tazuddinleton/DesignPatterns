@@ -24,10 +24,10 @@ namespace SpecificationPattern.Repositories
             return _context.Movies.SingleOrDefault(x => x.Id == id);
         }
 
-        public IReadOnlyList<Movie> GetList(GenericSpecification<Movie> specification)
+        public IReadOnlyList<Movie> GetList(AbstractSpecification<Movie> specification)
         {
             return _context.Movies
-                .Where(specification.Expression)
+                .Where(specification.ToExpression())
                 .ToList();
         }
 
