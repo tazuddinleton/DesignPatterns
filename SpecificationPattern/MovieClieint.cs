@@ -1,4 +1,5 @@
 ﻿using SpecificationPattern.Repositories;
+using SpecificationPattern.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +13,15 @@ namespace SpecificationPattern
 
         static void Main(string[] args)
         {
-            MovieRepository _repository = new MovieRepository();
 
-            var list = _repository.GetList();
+            MovieListViewModel model = new MovieListViewModel();
+            model.LoadMovies();
+            Display(model);            
+        }
 
+
+        static void Display(MovieListViewModel model)
+        {
             List<string> columns = new List<string>() { "Name", "Realease Date", "Genre", "MPAA", "Rating" };
 
             StringBuilder columnBuilder = new StringBuilder();
@@ -38,11 +44,11 @@ namespace SpecificationPattern
 
             StringBuilder rowBuilder = new StringBuilder();
             rowBuilder.Append("| ");
-            foreach (var item in list)
+            foreach (var item in model.Movies)
             {
                 rowBuilder.AddTableData(item.Title);
                 rowBuilder.AddTableData(item.RealeaseDate.ToShortDateString());
-                
+
                 rowBuilder.AddTableData(item.Genre);
                 rowBuilder.AddTableData(item.MpaaRating.ToString());
                 rowBuilder.AddTableData(string.Format("{0:N2}", item.Rating));

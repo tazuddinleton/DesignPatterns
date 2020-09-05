@@ -4,6 +4,7 @@ using System.Text;
 
 namespace SpecificationPattern.ValueObjects
 {
+    // Kids' movies are rated G or PG
     public enum MpaaRating
     {
         G = 1,
