@@ -19,12 +19,15 @@ namespace SpecificationPattern.ViewModels
         public IReadOnlyList<Movie> Movies { get; private set; }
 
         public bool ForKidsOnly { get; set; }
+        public bool AvailableOnCd { get; set; }
+        public double RatingAtLeast { get; set; }
 
 
         public void LoadMovies()
         {
-            Movies = _repository.GetList(ForKidsOnly);
+            Movies = _repository.GetList(ForKidsOnly, AvailableOnCd, RatingAtLeast);
         }
         
     }
 }
+ 

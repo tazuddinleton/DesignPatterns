@@ -16,6 +16,8 @@ namespace SpecificationPattern
 
             MovieListViewModel model = new MovieListViewModel();
             model.ForKidsOnly = true;
+            model.RatingAtLeast = 5.5;
+            model.AvailableOnCd = true;
             model.LoadMovies();
             Display(model);            
         }

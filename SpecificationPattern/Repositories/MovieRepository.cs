@@ -22,10 +22,18 @@ namespace SpecificationPattern.Repositories
             return _context.Movies.SingleOrDefault(x => x.Id == id);
         }
 
-        public IReadOnlyList<Movie> GetList(bool forKidsOnly)
+        public IReadOnlyList<Movie> GetList(
+                bool forKidsOnly,
+                bool availableOnCd,
+                double minimumRating
+            )
         {
             return _context.Movies
-                .Where(x => x.MpaaRating <= MpaaRating.PG || !forKidsOnly)
+                .Where(
+                x => (x.MpaaRating <= MpaaRating.PG || !forKidsOnly) &&
+                x.Rating >= minimumRating && 
+                (x.RealeaseDate <= DateTime.Now.AddMonths(-6) || !availableOnCd)
+                )
                 .ToList();
         }
     }
