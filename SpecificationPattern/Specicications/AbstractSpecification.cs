@@ -13,5 +13,20 @@ namespace SpecificationPattern.Specicications
         }
 
         public abstract Expression<Func<T, bool>> ToExpression();
+
+        public AbstractSpecification<T> And(AbstractSpecification<T> other)
+        {
+            return new AndSpecification<T>(this, other);    
+        }
+
+        public AbstractSpecification<T> Or(AbstractSpecification<T> other)
+        {
+            return new OrSpefication<T>(this, other);
+        }
+
+        public AbstractSpecification<T> Not()
+        {
+            return new NotSpecification<T>(this);
+        }
     }
 }
