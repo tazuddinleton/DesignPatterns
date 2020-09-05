@@ -15,9 +15,13 @@ namespace SpecificationPattern
         {
 
             MovieListViewModel model = new MovieListViewModel();
+            model.ForKidsOnly = true;
             model.LoadMovies();
             Display(model);            
         }
+
+
+
 
 
         static void Display(MovieListViewModel model)
@@ -55,6 +59,7 @@ namespace SpecificationPattern
                 rowBuilder.Append("\n");
             }
             Console.WriteLine(rowBuilder.ToString());
+            Console.WriteLine($"{model.Movies.Count} movies are displayed.");
         }
 
     }

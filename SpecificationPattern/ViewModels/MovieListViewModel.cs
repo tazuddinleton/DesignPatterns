@@ -23,7 +23,7 @@ namespace SpecificationPattern.ViewModels
 
         public void LoadMovies()
         {
-            Movies = _repository.GetList();
+            Movies = _repository.GetList(ForKidsOnly);
         }
         
     }
