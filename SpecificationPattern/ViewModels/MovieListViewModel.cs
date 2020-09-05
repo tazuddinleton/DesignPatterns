@@ -3,6 +3,7 @@ using SpecificationPattern.Repositories;
 using SpecificationPattern.ValueObjects;
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace SpecificationPattern.ViewModels
@@ -35,7 +36,7 @@ namespace SpecificationPattern.ViewModels
             Movie movie = _repository.GetOne(movieId);
             if (movie == null)
                 return;
-            if (movie.MpaaRating > MpaaRating.PG)
+            if (Movie.forKids.Compile().Invoke(movie))
             {
                 Console.WriteLine("Movie is not suitable for children");
                 return;
@@ -49,7 +50,7 @@ namespace SpecificationPattern.ViewModels
             Movie movie = _repository.GetOne(movieId);
             if (movie == null)
                 return;
-            if (movie.RealeaseDate <= DateTime.Now.AddMonths(-6))
+            if (Movie.availableOnCd.Compile().Invoke(movie))
             {
                 Console.WriteLine("Movie is not available on cd");
                 return;
@@ -63,7 +64,14 @@ namespace SpecificationPattern.ViewModels
 
         public void LoadMovies()
         {
-            Movies = _repository.GetList(ForKidsOnly, AvailableOnCd, RatingAtLeast);
+            Expression<Func<Movie, bool>> expression = !ForKidsOnly ? Movie.forKids : x => true;
+            Expression<Func<Movie, bool>> expression2 = !AvailableOnCd ? Movie.availableOnCd : x => true;
+
+            // Problem 1: Doesn't scale. combining expression is not easy 
+            // Problem 2: Client code is dealing with low level stuff...like compiling an expression to lampda
+            // before using it.
+            // Problem 3: Not encapsulated
+            Movies = _repository.GetList(expression);
         }
         
     }
