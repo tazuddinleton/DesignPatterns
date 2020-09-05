@@ -1,5 +1,6 @@
 ﻿using SpecificationPattern.Models;
 using SpecificationPattern.Persistence;
+using SpecificationPattern.Specicications;
 using SpecificationPattern.ValueObjects;
 using System;
 using System.Collections.Generic;
@@ -23,11 +24,16 @@ namespace SpecificationPattern.Repositories
             return _context.Movies.SingleOrDefault(x => x.Id == id);
         }
 
-        public IReadOnlyList<Movie> GetList(Expression<Func<Movie, bool>> filter)
+        public IReadOnlyList<Movie> GetList(GenericSpecification<Movie> specification)
         {
             return _context.Movies
-                .Where(filter)
+                .Where(specification.Expression)
                 .ToList();
+        }
+
+        public IQueryable<Movie> Find()
+        {
+            return _context.Movies.AsQueryable();
         }
     }
 }
