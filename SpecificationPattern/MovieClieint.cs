@@ -18,8 +18,12 @@ namespace SpecificationPattern
             model.ForKidsOnly = true;
             model.RatingAtLeast = 5.5;
             model.AvailableOnCd = true;
+            
             model.LoadMovies();
-            Display(model);            
+            Display(model);
+
+            model.BuyChildTicket(2);
+
         }
 
 
