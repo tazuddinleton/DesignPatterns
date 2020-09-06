@@ -70,9 +70,15 @@ namespace SpecificationPattern.ViewModels
         public void LoadMovies()
         {
 
-            var specification = new KidsMovieSpecification();
+            AbstractSpecification<Movie> spec = AbstractSpecification<Movie>.All;
 
-            Movies = _repository.GetList(specification);
+            if (ForKidsOnly)
+            {
+                spec.And(new KidsMovieSpecification());
+            }
+         
+
+            Movies = _repository.GetList(spec);
 
         }
         

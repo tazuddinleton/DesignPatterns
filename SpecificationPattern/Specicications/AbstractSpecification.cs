@@ -12,6 +12,8 @@ namespace SpecificationPattern.Specicications
             return ToExpression().Compile().Invoke(entity);
         }
 
+        public static readonly AbstractSpecification<T> All = new InitialSpecification<T>();
+
         public abstract Expression<Func<T, bool>> ToExpression();
 
         public AbstractSpecification<T> And(AbstractSpecification<T> other)
@@ -28,5 +30,7 @@ namespace SpecificationPattern.Specicications
         {
             return new NotSpecification<T>(this);
         }
+
+        
     }
 }
