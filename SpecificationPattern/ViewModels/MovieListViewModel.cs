@@ -38,10 +38,8 @@ namespace SpecificationPattern.ViewModels
             Movie movie = _repository.GetOne(movieId);
             if (movie == null)
                 return;
-            Query<Movie> specification = new KidsMovieSpecification();
-               
 
-            if (!specification.IsSatisfiedBy(movie))
+            if (!MovieSpec.KidsMovie.IsSatisfiedBy(movie))
             {
                 Console.WriteLine("Movie is not suitable for children");
                 return;
@@ -69,12 +67,11 @@ namespace SpecificationPattern.ViewModels
 
         public void LoadMovies()
         {
-
-            Query<Movie> spec = Query<Movie>.All;
+            var spec = MovieSpec.All;
 
             if (ForKidsOnly)
             {
-                spec.And(new KidsMovieSpecification());
+                spec.And(MovieSpec.KidsMovie);
             }
          
 

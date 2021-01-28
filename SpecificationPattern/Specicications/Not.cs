@@ -6,11 +6,11 @@ namespace SpecificationPattern.Specicications
 {
     internal sealed class Not<T> : Query<T>
     {
-        private readonly Query<T> _expression;        
+        private readonly Query<T> _expression;
 
         public Not(Query<T> expression)
         {
-            _expression = expression;            
+            _expression = expression;
         }
 
         public override Expression<Func<T, bool>> ToExpression()

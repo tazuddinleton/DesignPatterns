@@ -9,10 +9,19 @@ namespace SpecificationPattern.Specicications
         private readonly Query<T> _left;
         private readonly Query<T> _right;
 
+        private readonly Expression<Func<T, bool>> _lefteExpression;
+        private readonly Expression<Func<T, bool>> _righteExpression;
+
         public Or(Query<T> left, Query<T> right)
         {
             _left = left;
             _right = right;
+        }
+
+        public Or(Expression<Func<T, bool>> left, Expression<Func<T, bool>> right)
+        {
+            _lefteExpression = left;
+            _righteExpression = right;
         }
 
         public override Expression<Func<T, bool>> ToExpression()

@@ -18,7 +18,12 @@ namespace SpecificationPattern.Specicications
 
         public Query<T> And(Query<T> other)
         {
-            return new And<T>(this, other);    
+            return new And<T>(this, other);
+        }
+
+        public Query<T> And(Expression<Func<T, bool>> other)
+        {
+            return new And<T>(this.ToExpression(), other);
         }
 
         public Query<T> Or(Query<T> other)
@@ -26,11 +31,16 @@ namespace SpecificationPattern.Specicications
             return new Or<T>(this, other);
         }
 
+        public Query<T> Or(Expression<Func<T, bool>> other)
+        {
+            return new Or<T>(this.ToExpression(), other);
+        }
+
         public Query<T> Not()
         {
             return new Not<T>(this);
         }
 
-        
+
     }
 }
