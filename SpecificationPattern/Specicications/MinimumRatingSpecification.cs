@@ -7,7 +7,7 @@ using System.Text;
 
 namespace SpecificationPattern.Specicications
 {
-    public class MinimumRatingSpecification : AbstractSpecification<Movie>
+    public class MinimumRatingSpecification : Query<Movie>
     {
         private readonly double _minimumRating;
 

@@ -4,12 +4,12 @@ using System.Linq.Expressions;
 
 namespace SpecificationPattern.Specicications
 {
-    internal sealed class AndSpecification<T> : AbstractSpecification<T>
+    internal sealed class And<T> : Query<T>
     {
-        private readonly AbstractSpecification<T> _left;
-        private readonly AbstractSpecification<T> _right;
+        private readonly Query<T> _left;
+        private readonly Query<T> _right;
 
-        public AndSpecification(AbstractSpecification<T> left, AbstractSpecification<T> right)
+        public And(Query<T> left, Query<T> right)
         {
             _left = left;
             _right = right;

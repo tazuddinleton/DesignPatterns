@@ -38,7 +38,7 @@ namespace SpecificationPattern.ViewModels
             Movie movie = _repository.GetOne(movieId);
             if (movie == null)
                 return;
-            AbstractSpecification<Movie> specification = new KidsMovieSpecification();
+            Query<Movie> specification = new KidsMovieSpecification();
                
 
             if (!specification.IsSatisfiedBy(movie))
@@ -56,7 +56,7 @@ namespace SpecificationPattern.ViewModels
             if (movie == null)
                 return;
 
-            AbstractSpecification<Movie> specification = new MoviesOnCdSpecification();
+            Query<Movie> specification = new MoviesOnCdSpecification();
 
             if (!specification.IsSatisfiedBy(movie))
             {
@@ -70,7 +70,7 @@ namespace SpecificationPattern.ViewModels
         public void LoadMovies()
         {
 
-            AbstractSpecification<Movie> spec = AbstractSpecification<Movie>.All;
+            Query<Movie> spec = Query<Movie>.All;
 
             if (ForKidsOnly)
             {

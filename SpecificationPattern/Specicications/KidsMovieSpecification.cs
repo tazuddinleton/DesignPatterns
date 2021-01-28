@@ -7,7 +7,7 @@ using System.Text;
 
 namespace SpecificationPattern.Specicications
 {
-    public sealed class KidsMovieSpecification : AbstractSpecification<Movie>
+    public sealed class KidsMovieSpecification : Query<Movie>
     {
         public override Expression<Func<Movie, bool>> ToExpression()
         {

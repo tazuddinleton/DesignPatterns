@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 
 namespace SpecificationPattern.Specicications
 {
-    public sealed class MoviesOnCdSpecification : AbstractSpecification<Movie>
+    public sealed class MoviesOnCdSpecification : Query<Movie>
     {
         public override Expression<Func<Movie, bool>> ToExpression()
         {

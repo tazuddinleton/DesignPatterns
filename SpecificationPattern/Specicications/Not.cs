@@ -4,11 +4,11 @@ using System.Linq.Expressions;
 
 namespace SpecificationPattern.Specicications
 {
-    internal sealed class NotSpecification<T> : AbstractSpecification<T>
+    internal sealed class Not<T> : Query<T>
     {
-        private readonly AbstractSpecification<T> _expression;        
+        private readonly Query<T> _expression;        
 
-        public NotSpecification(AbstractSpecification<T> expression)
+        public Not(Query<T> expression)
         {
             _expression = expression;            
         }

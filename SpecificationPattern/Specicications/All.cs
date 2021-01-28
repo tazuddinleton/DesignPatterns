@@ -3,7 +3,7 @@ using System.Linq.Expressions;
 
 namespace SpecificationPattern.Specicications
 {
-    internal sealed class InitialSpecification<T> : AbstractSpecification<T>
+    internal sealed class All<T> : Query<T>
     {
         public override Expression<Func<T, bool>> ToExpression()
         {

@@ -4,12 +4,12 @@ using System.Linq.Expressions;
 
 namespace SpecificationPattern.Specicications
 {
-    internal sealed class OrSpefication<T> : AbstractSpecification<T>
+    internal sealed class Or<T> : Query<T>
     {
-        private readonly AbstractSpecification<T> _left;
-        private readonly AbstractSpecification<T> _right;
+        private readonly Query<T> _left;
+        private readonly Query<T> _right;
 
-        public OrSpefication(AbstractSpecification<T> left, AbstractSpecification<T> right)
+        public Or(Query<T> left, Query<T> right)
         {
             _left = left;
             _right = right;
