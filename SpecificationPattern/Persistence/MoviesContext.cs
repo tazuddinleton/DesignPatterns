@@ -9,7 +9,7 @@ namespace SpecificationPattern.Persistence
 {
     public class MoviesContext : DbContext
     {
-        private readonly string _connString = "Server = (localdb)\\mssqllocaldb; Database=Movies;";
+        private readonly string _connString = "Server=localhost;User Id=sa;Password=Pass@123; Database=Movies;";
 
         public DbSet<Movie> Movies { get; set; }
 

@@ -4,8 +4,6 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SpecificationPattern.Models;
 using SpecificationPattern.ValueObjects;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace SpecificationPattern.Persistence
 {
