@@ -8,7 +8,7 @@ public class AirControlTower : IAirControlTower
         this._airCrafts = new List<IAirCraft>();
         
         if (runways == null) {
-            throw new Exception("Airport not");
+            throw new Exception("Airport not operational");
         }
         this._runways = new List<IRunway>();
         runways.ForEach(r => this._runways.Add(r));
