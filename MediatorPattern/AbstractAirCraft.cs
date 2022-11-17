@@ -12,10 +12,15 @@ public abstract class AbstractAirCraft : IAirCraft {
     public Guid AircraftId { get; }
     public string Model { get; }
 
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
         return obj is AbstractAirCraft craft &&
                System.Collections.Generic.EqualityComparer<Guid>.Default.Equals(AircraftId, craft.AircraftId) &&
                Model == craft.Model;
+    }
+
+    public override int GetHashCode()
+    {
+       return AircraftId.GetHashCode();
     }
 }
