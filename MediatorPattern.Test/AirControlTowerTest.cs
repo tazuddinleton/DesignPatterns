@@ -19,14 +19,14 @@ public class AirControlTowerTest
         controlTower.AddIncomingCraft(plane1);
 
         var allIncoing = controlTower.AllIncomingCrafts();
-        Assert.Equal(allIncoing.Count, 1);
+        Assert.Equal(1, allIncoing.Count);
 
         var plane2 = new AirCraft("Airbus A340");
         controlTower.AddIncomingCraft(plane2);
         allIncoing = controlTower.AllIncomingCrafts();
 
         
-        Assert.Equal(allIncoing.ToList().Last(), plane2);
+        Assert.Equal(plane2, allIncoing.ToList().Last());
 
 
     }
