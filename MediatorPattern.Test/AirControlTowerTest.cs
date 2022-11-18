@@ -13,21 +13,17 @@ public class AirControlTowerTest
     {
         var runWays = new List<IRunway>();
         runWays.Add(new Runway("Run way 1"));
-        var controlTower = new AirControlTower(runWays);
+
+        var ctrlTower = new AirControlTower(runWays);
 
         var plane1 = new AirCraft("Boyeing 737");
-        controlTower.AddIncomingCraft(plane1);
-
-        var allIncoing = controlTower.AllIncomingCrafts();
-        Assert.Equal(1, allIncoing.Count);
+        ctrlTower.AddIncomingCraft(plane1);
+        var incomingPlanes = ctrlTower.AllIncomingCrafts();
+        Assert.Equal(1, incomingPlanes.Count);
 
         var plane2 = new AirCraft("Airbus A340");
-        controlTower.AddIncomingCraft(plane2);
-        allIncoing = controlTower.AllIncomingCrafts();
-
-        
-        Assert.Equal(plane2, allIncoing.ToList().Last());
-
-
+        ctrlTower.AddIncomingCraft(plane2);
+        incomingPlanes = ctrlTower.AllIncomingCrafts();
+        Assert.Equal(plane2, incomingPlanes.ToList().Last());
     }
 }
