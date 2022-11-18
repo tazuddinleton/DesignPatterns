@@ -1,6 +1,8 @@
+using Serilog;
+
 namespace MediatorPattern.AirTrafficControlSystem;
 
-public abstract class AbstractAirCraft : IAirCraft {
+public abstract class AbstractAirCraft : IAirCraft, ILandableCraft {
     public AbstractAirCraft(string model)
     {
         this.Model =  model;
@@ -22,5 +24,12 @@ public abstract class AbstractAirCraft : IAirCraft {
     public override int GetHashCode()
     {
        return AircraftId.GetHashCode();
+    }
+
+    public void StartLandingSequence()
+    {
+        Log.Information("Landing...");
+        Thread.Sleep(1000);
+        Log.Information("Done.");
     }
 }

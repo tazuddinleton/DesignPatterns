@@ -1,2 +1,12 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using Serilog;
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        using var log = new LoggerConfiguration().WriteTo.Console().CreateLogger();
+        Log.Logger = log;
+        
+        log.Information("Hello World!");
+    }
+
+}

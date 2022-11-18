@@ -1,3 +1,5 @@
+using Serilog;
+
 namespace MediatorPattern.AirTrafficControlSystem;
 
 public class AirCraft : AbstractAirCraft
@@ -17,7 +19,7 @@ public class AirCraft : AbstractAirCraft
 
     public override void Wait()
     {
-        Console.WriteLine("Waiting for the runway to be clear...");
+        Log.Information("Waiting for the runway to be clear...");
     }
 
     public override int GetHashCode()
